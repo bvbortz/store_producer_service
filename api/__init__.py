@@ -40,7 +40,6 @@ def main():
             data = request.json
             prompt = data['prompt']
             name = data['name']
-            publish_handler(rabbitMQ_instance, prompt, name)
             func = lambda : publish_handler(rabbitMQ_instance, prompt, name)
             t = threading.Thread(target=func)
             t.start()
